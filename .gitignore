@@ -1,0 +1,11 @@
+node_modules/
+dist/
+.cache/
+
+*.swp
+*.swo
+.DS_Store
+
+src/js/bundle.js
+src/js/bundle.min.js
+coverage/
