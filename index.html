@@ -11,7 +11,7 @@
 
 <body>
 
-  <header class="header">
+  <header id="header" class="header">
     <nav class="navigation">
       <ul class="nav-list"></ul>
       <li class="nav-item"><a href="#task1">Zadanie 1</a></li>
@@ -28,7 +28,7 @@
   </div>
   <div id="task2">
     <div id="controls">
-      <input type="number" min="0" max="100" step="1" class="js-input" />
+      <input type="number" min="0" max="100" step="1" class="js-input" placeholder="Write here..." />
       <button class="add-btn" type="button" data-action="create">Utwórz</button>
       <button class="delete-btn" type="button" data-action="destroy">Usuń</button>
     </div>
@@ -38,9 +38,8 @@
 
   <div id="task3">
     <form action="" id="search-form" class="search-form">
-      <input class="search" type="text" name="query" autocomplete="off" placeholder="search">
+      <input class="search" type="text" name="query" autocomplete="off" placeholder="Search images...">
       <button class="search-btn" type="submit">
-        <span>Search images...</span>
       </button>
     </form>
 
@@ -48,10 +47,7 @@
     </div>
 
     <button id="go-top-button" class="go-top-button"></button>
-    <!-- 
-  <script src="./index.js"></script>
-  <script src="./src/js/task1.js"></script>
-  <script src="./src/js/task2.js"></script> -->
+
 </body>
 
 </html>

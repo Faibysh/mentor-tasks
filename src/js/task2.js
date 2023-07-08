@@ -2,8 +2,6 @@ import Notiflix from "notiflix";
 
 export function createBoxes(amount) {
   const boxesContainer = document.getElementById("boxes");
-  const existingBoxes = boxesContainer.children;
-  const existingBoxCount = existingBoxes.length;
 
   if (amount === 0 || isNaN(amount)) {
     Notiflix.Notify.failure("Wprowadzono nieprawidłową wartość!");
@@ -12,24 +10,15 @@ export function createBoxes(amount) {
     return;
   }
 
-  if (amount > existingBoxCount) {
-    for (let i = existingBoxCount; i < amount; i++) {
-      const box = document.createElement("div");
-      box.style.width = `${30 + i * 10}px`;
-      box.style.height = `${30 + i * 10}px`;
-      box.style.backgroundColor = getRandomColor();
-      box.style.marginTop = "10px";
-      boxesContainer.appendChild(box);
-    }
-  } else if (amount < existingBoxCount) {
-    for (let i = existingBoxCount - 1; i >= amount; i--) {
-      boxesContainer.removeChild(existingBoxes[i]);
-    }
-  } else {
-    for (let i = 0; i < existingBoxCount; i++) {
-      const box = existingBoxes[i];
-      box.style.backgroundColor = getRandomColor();
-    }
+  boxesContainer.innerHTML = "";
+
+  for (let i = 0; i < amount; i++) {
+    const box = document.createElement("div");
+    box.style.width = `${30 + i * 10}px`;
+    box.style.height = `${30 + i * 10}px`;
+    box.style.backgroundColor = getRandomColor();
+    box.style.marginTop = "10px";
+    boxesContainer.appendChild(box);
   }
 
   const input = document.querySelector(".js-input");
