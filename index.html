@@ -11,25 +11,29 @@
 
 <body>
 
-  <header>
-    <nav>
-      <ul>
-        <li><a href="#task1">ZADANIE 1</a></li>
-        <li><a href="#task2">ZADANIE 2</a></li>
-        <li><a href="#task3">ZADANIE 3</a></li>
+  <header class="header">
+    <nav class="navigation">
+      <ul class="nav-list"></ul>
+      <li class="nav-item"><a href="#task1">Zadanie 1</a></li>
+      <li class="nav-item"><a href="#task2">Zadanie 2</a></li>
+      <li class="nav-item"><a href="#task3">Zadanie 3</a></li>
       </ul>
     </nav>
   </header>
 
-  <div id="task1"></div>
+  <div id="task1">
+    <p class="text">
+      Rozwiązanie tego zadania można zobaczyć w konsoli
+    </p>
+  </div>
   <div id="task2">
     <div id="controls">
       <input type="number" min="0" max="100" step="1" class="js-input" />
-      <button type="button" data-action="create">Utwórz</button>
-      <button type="button" data-action="destroy">Usuń</button>
+      <button class="add-btn" type="button" data-action="create">Utwórz</button>
+      <button class="delete-btn" type="button" data-action="destroy">Usuń</button>
     </div>
 
-    <div id="boxes"></div>
+    <div class="boxes" id="boxes"></div>
   </div>
 
   <div id="task3">

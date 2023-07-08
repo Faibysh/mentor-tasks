@@ -68,11 +68,7 @@ async function getQuery() {
     );
 
     gallery.insertAdjacentHTML("beforeend", markUp);
-    const lightbox = new SimpleLightbox(".photo-link", {
-      captions: true,
-      captionsData: "alt",
-      captionDelay: 250,
-    });
+    lightbox = new SimpleLightbox(".photo-link");
     return hits;
   } catch (error) {
     Notiflix.Notify.failure(
@@ -88,8 +84,8 @@ function clearHtml() {
 function createPhotoCard({ webformatURL, largeImageURL, tags }) {
   return `
     <li>
-      <a href="${largeImageURL}">
-        <img class="img" src="${webformatURL}" alt="${tags}" data-source="${largeImageURL}" />
+      <a class="photo-link" href="${largeImageURL}">
+        <img class="img" src="${webformatURL}" alt="${tags}" />
       </a>
     </li>
   `;

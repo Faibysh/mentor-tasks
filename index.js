@@ -15,16 +15,3 @@ import {
   clearHtml,
   createPhotoCard,
 } from "./src/js/task3.js";
-
-const input = document.querySelector(".js-input");
-const createButton = document.querySelector('[data-action="create"]');
-const destroyButton = document.querySelector('[data-action="destroy"]');
-
-createButton.addEventListener("click", () => {
-  const amount = parseInt(input.value);
-  if (!isNaN(amount)) {
-    createBoxes(amount);
-  }
-});
-
-destroyButton.addEventListener("click", destroyBoxes);
