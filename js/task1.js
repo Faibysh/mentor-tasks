@@ -1,0 +1,1 @@
+export class StringBuilder{constructor(e=""){this.value=e}append(e){return this.value+=e,this}prepend(e){return this.value=e+this.value,this}pad(e){return this.value=e+this.value+e,this}}export const builder=new StringBuilder(".");builder.append("^").prepend("^").pad("=");export const builderValue=builder.value;console.log(builderValue);
