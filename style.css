@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 * {
   border: 0;
   box-sizing: border-box;
@@ -53,7 +57,7 @@ li {
   right: 0;
   background-color: #3d3d3d;
   padding: 30px;
-  margin-bottom: 50px;
+  z-index: 100;
 }
 
 .navigation {
@@ -86,11 +90,23 @@ li {
 }
 
 #task1 {
+  padding-top: 400px;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  margin: 600px;
+}
+
+#task2 {
+  padding-top: 400px;
+  margin-top: 400px;
+  margin-bottom: 430px;
+}
+
+#task3 {
+  padding-top: 100px;
+  margin-top: 300px;
+  padding-bottom: 50px;
 }
 
 .text {
@@ -98,18 +114,12 @@ li {
   justify-content: center;
   text-align: center;
   align-items: center;
-  /* margin-top: 450px;
-  margin-bottom: 350px; */
   padding: 30px;
   background-color: #3d3d3d;
   border-radius: 4px;
-  width: 600px;
-
 }
 
-#task2 {
-  margin: 600px;
-}
+
 
 #boxes {
   display: flex;
@@ -125,14 +135,12 @@ li {
   justify-content: center;
   align-items: center;
   gap: 10px;
-  /* margin-top: 300px;
-  margin-bottom: 450px; */
 }
 
 .js-input {
-  width: 70px;
+  width: 115px;
   height: 37px;
-  padding: 5px;
+  padding: 7px;
   border-radius: 4px;
   color: #f1f1f1;
   margin-right: 10px;
@@ -158,9 +166,6 @@ li {
   margin-left: 10px;
 }
 
-#task3 {
-  margin-top: 600px;
-}
 
 .add-btn:hover,
 .delete-btn:hover {
@@ -212,7 +217,7 @@ li {
   padding: 50px;
   justify-content: center;
   max-width: 30em;
-  margin-bottom: 600px;
+  margin-bottom: 100px;
 }
 
 .search-form input {
@@ -227,9 +232,6 @@ li {
   appearance: none;
 }
 
-.search-form input::-webkit-search-decoration {
-  -webkit-appearance: none;
-}
 
 .search-form input:focus,
 .search-form input:valid {
@@ -276,13 +278,6 @@ li {
   transform-origin: 0 50%;
 }
 
-.search-btn span {
-  display: inline-block;
-  overflow: hidden;
-  width: 1px;
-  height: 1px;
-}
-
 .search-form input:focus+.search-btn,
 .search-form input:valid+.search-btn {
   background: #32C682;
@@ -297,18 +292,6 @@ li {
   opacity: 1;
 }
 
-.search-form input:focus+.search-btn:hover,
-.search-form input:valid+.search-btn:hover,
-.search-form input:valid:not(:focus)+.search-btn:focus {
-  background: #32C682;
-}
-
-.search-form input:focus+.search-btn:active,
-.search-form input:valid+.search-btn:active {
-  transform: translateY(1px);
-}
-
-
 @media screen and (prefers-color-scheme: dark) {
 
   body,
@@ -318,10 +301,6 @@ li {
 
   body {
     background: #575555;
-  }
-
-  .search-form input {
-    box-shadow: 0 0 0 0.4em #f1f1f1 inset;
   }
 
   .search-form input:focus,
@@ -344,15 +323,18 @@ img {
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 40px;
   max-width: 1140px;
-  grid-gap: 80px 40px;
   margin: 0 auto;
+  justify-content: center;
 }
 
+.gallery img {
+  width: 300px;
+  height: 200px;
+}
 
 .go-top-button {
   width: 48px;
