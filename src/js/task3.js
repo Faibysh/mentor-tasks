@@ -21,6 +21,7 @@ async function onSearch(e) {
   if (searchQuery) {
     clearHtml();
     endOfResultsNotified = false;
+    hasResults = false;
 
     hits = await getQuery();
 
@@ -74,31 +75,37 @@ async function getQuery() {
       throw new Error();
     }
 
-    const markUp = newHits.arrayOfHits.reduce(
-      (markUp, hit) => createPhotoCard(hit) + markUp,
+    const existingImageUrls = Array.from(
+      gallery.querySelectorAll(".photo-link")
+    ).map((link) => link.href);
+
+    const uniqueHits = newHits.arrayOfHits.filter(
+      (hit) => !existingImageUrls.includes(hit.largeImageURL)
+    );
+
+    const markUp = uniqueHits.reduce(
+      (markUp, hit) => markUp + createPhotoCard(hit),
       ""
     );
 
     gallery.insertAdjacentHTML("beforeend", markUp);
+
     if (!lightbox) {
-      lightbox = new SimpleLightbox(".photo-link");
-    }
-    return newHits;
-  } catch (error) {
-    if (
-      error instanceof TypeError &&
-      error.message ===
-        "Cannot read properties of undefined (reading 'numberOfTotalHits')"
-    ) {
-      throw error;
+      setTimeout(() => {
+        lightbox = new SimpleLightbox(".photo-link", {
+          elements: ".photo-link:not(.rendered)",
+        });
+      }, 0);
     } else {
-      if (!hasResults) {
-        Notiflix.Notify.failure(
-          "Przepraszamy, nie ma obrazów pasujących do zapytania. Spróbuj ponownie."
-        );
-      }
+      lightbox.refresh();
     }
-  }
+
+    gallery.querySelectorAll(".photo-link").forEach((link) => {
+      link.classList.add("rendered");
+    });
+
+    return newHits;
+  } catch (error) {}
 }
 
 function clearHtml() {
@@ -109,7 +116,7 @@ function clearHtml() {
 function createPhotoCard({ webformatURL, largeImageURL, tags }) {
   return `
     <li>
-      <a class="photo-link" href="${largeImageURL}">
+      <a class="photo-link" href="${largeImageURL}" data-lightbox="photo">
         <img class="img" src="${webformatURL}" alt="${tags}" />
       </a>
     </li>
@@ -139,7 +146,7 @@ window.addEventListener("scroll", (e) => {
 });
 
 window.addEventListener("DOMContentLoaded", async () => {
-  searchQuery = "random";
+  searchQuery = "Information Technology";
   try {
     hits = await getQuery();
     if (hits && hits.numberOfTotalHits) {
