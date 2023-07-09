@@ -25,4 +25,7 @@ builder.append("^").prepend("^").pad("=");
 
 export const builderValue = builder.value;
 
+const paragraph = document.querySelector("#task1 .text");
+paragraph.textContent = builderValue;
+
 console.log(builderValue);
